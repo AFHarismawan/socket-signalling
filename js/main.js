@@ -235,7 +235,7 @@ function requestTurn(turnURL) {
       }
     };
     xhr.open('PUT', turnURL, true);
-    req.setRequestHeader("Authorization", "Basic " + "aGFyaXNtYXdhbjo0MGEwYTRiYy01OTE2LTExZTgtYjFkYS03MWNlMGE3ZWEyYjk="); 
+    xhr.setRequestHeader("Authorization", "Basic " + "aGFyaXNtYXdhbjo0MGEwYTRiYy01OTE2LTExZTgtYjFkYS03MWNlMGE3ZWEyYjk="); 
     xhr.send();
   }
 }
