@@ -231,9 +231,9 @@ function requestTurn(turnURL) {
         for (var i = 1; i < turnServer.v.iceServers.length; i++) {
           pcConfig.iceServers.push({
             'url': turnServer.v.iceServers[i].username + '@' + turnServer.v.iceServers[i].url,
-            'credential': turnServer.v.iceServers[i].password
+            'credential': turnServer.v.iceServers[i].credential
           });
-          console.log(turnServer.v.iceServers[i].username + '@' + turnServer.v.iceServers[i].url + turnServer.v.iceServers[i].password);
+          console.log(turnServer.v.iceServers[i].username + '@' + turnServer.v.iceServers[i].url + turnServer.v.iceServers[i].credential);
         }
         turnReady = true;
       }
