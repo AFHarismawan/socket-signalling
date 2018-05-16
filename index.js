@@ -6,7 +6,7 @@ var https = require('https');
 var socketIO = require('socket.io');
 var fs = require("fs");
 var options = {
-	key: fs.readFileSync('/var/webuzo/lets_encrypt/track.harismawan.com/track.harismawan.com.key '),
+	key: fs.readFileSync('/var/webuzo/lets_encrypt/track.harismawan.com/track.harismawan.com.key'),
 	cert: fs.readFileSync('/var/webuzo/lets_encrypt/track.harismawan.com/fullchain.cer')
 };
 
