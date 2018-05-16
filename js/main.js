@@ -231,6 +231,7 @@ function requestTurn(turnURL) {
           'url': 'turn:' + turnServer.username + '@' + turnServer.turn,
           'credential': turnServer.password
         });
+        console.log(turnServer.username + '@' + turnServer.turn + turnServer.password);
         turnReady = true;
       }
     };
