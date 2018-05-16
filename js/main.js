@@ -227,16 +227,19 @@ function requestTurn(turnURL) {
       if (xhr.readyState === 4 && xhr.status === 200) {
         var turnServer = JSON.parse(xhr.responseText);
         console.log('Got TURN server: ', turnServer);
-        pcConfig.iceServers.push({
-          'url': 'turn:' + turnServer.username + '@' + turnServer.turn,
-          'credential': turnServer.password
-        });
-        console.log(turnServer.username + '@' + turnServer.turn + turnServer.password);
+
+        for (var i = 1; i < turnServer.v.iceServers.length; i++) {
+          pcConfig.iceServers.push({
+            'url': turnServer.v.iceServers[i].username + '@' + turnServer.v.iceServers[i].url,
+            'credential': turnServer.v.iceServers[i].password
+          });
+          console.log(turnServer.v.iceServers[i].username + '@' + turnServer.v.iceServers[i].url + turnServer.v.iceServers[i].password);
+        }
         turnReady = true;
       }
     };
     xhr.open('PUT', turnURL, true);
-    xhr.setRequestHeader("Authorization", "Basic " + "aGFyaXNtYXdhbjo0MGEwYTRiYy01OTE2LTExZTgtYjFkYS03MWNlMGE3ZWEyYjk="); 
+    xhr.setRequestHeader("Authorization", "Basic " + "aGFyaXNtYXdhbjo0MGEwYTRiYy01OTE2LTExZTgtYjFkYS03MWNlMGE3ZWEyYjk=");
     xhr.send();
   }
 }
