@@ -57,20 +57,20 @@ io.sockets.on('connection', function (socket) {
       roomObject.name = room;
       roomObject.client = 1;
       index = stream.length;
-      stream.push(room);
+      stream.push(roomObject);
     }
 
     var numClients = roomObject.client;
     log('Room ' + room + ' now has ' + numClients + ' client(s)');
 
     if (numClients === 1) {
-      stream[index].client = stream[index].client + 1;
+      stream[index].client = numClients + 1;
       socket.join(room);
       log('Client ID ' + socket.id + ' created room ' + room);
       socket.emit('created', room, socket.id);
     } else if (numClients < 5) {
       log('Client ID ' + socket.id + ' joined room ' + room);
-      stream[index].client = stream[index].client + 1;
+      stream[index].client = numClients + 1;
       io.sockets.in(room).emit('join', room);
       socket.join(room);
       socket.emit('joined', room, socket.id);
